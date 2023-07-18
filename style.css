@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+:root {
+    --black: #1C2321;
+    --white: #f0e8d4;
+    --green: #98EECC;
+    --light-green: #D0F5BE;
+    --yellow: #FBFFDC;
+    --brown: #A4907C;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+p { font-size: 20px; font-weight: 600; }
+
+.box-w15-h100 { width: 15%; height: 100%; }
+.box-w20-h100 { width: 20%; height: 100%; }
+.box-w80-h100 { width: 80%; height: 100%; }
+.box-w85-h100 { width: 85%; height: 100%; }
+
+.box-w100-h10 { width: 100%; height: 10%; }
+.box-w100-h15 { width: 100%; height: 15%; }
+.box-w100-h20 { width: 100%; height: 20%; }
+.box-w100-h40 { width: 100%; height: 40%; }
+.box-w100-h45 { width: 100%; height: 45%; }
+.box-w100-h50 { width: 100%; height: 50%; }
+.box-w100-h80 { width: 100%; height: 80%; }
+
+.fl-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.fl-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#wordToType {
+    font-size: 80px;
+    letter-spacing: 2px;
+    color: var(--black);
+    border-bottom: 10px dotted var(--black);
+    text-decoration: none;
+    font-weight: 900;
+}
+
+#wordTyped {
+    font-size: 80px;
+    letter-spacing: 2px;
+    color: var(--black);
+    font-weight: 900;
+}
+
+
+.padded { padding: 15px 30px; }
+.rounded { border-radius: 25px; }
+.gap-40 { gap: 40px; }
+.shadow-md { box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; }
+
+.bg-white { background-color: var(--white); }
+.bg-green { background-color: var(--green); }
+.bg-light-green { background-color: var(--light-green); }
+.bg-yellow { background-color: var(--dark-yellow); }
+.bg-brown { background-color: var(--brown); }
+.bg-black { background-color: var(--black); }
+
+.txt-white { color: var(--white); }
