@@ -5,13 +5,16 @@ let wordTyped = "";
 // Vengono impostate le due variabili DOM
 let wordToTypeDom = document.getElementById("wordToType");
 let wordTypedDom = document.getElementById("wordTyped");
+let scoreBox = document.getElementById("score-box");
+let overlay = document.getElementById("overlay");
+let resetButton = document.getElementById('btn-reset');
 
 // Array che identificano quali lettere sono valide e la lista di parole
 let legitKeys = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
 let legitWords = [];
 
-let percentage = 0, bestScore = 0, activeScore = 0;
-
+let bestScore = 0, activeScore = 0, firstKeyDown = 1;
+  
 window.addEventListener("load", (e) => {
     // Recuperiamo i dati 
     fetch("words.txt")
@@ -23,6 +26,8 @@ window.addEventListener("load", (e) => {
     .catch((e) => console.error(e));
 });
 
+document.addEventListener("keydown", handleFirstKeyDown);
+
 document.addEventListener("keydown", (e) => {
     // Se viene premuto il backspace l'ultima lettere sarà cancellata
     if(e.key == "Backspace") {
@@ -33,7 +38,8 @@ document.addEventListener("keydown", (e) => {
      * quindi previene tasti come numeri, shift, tab ecc...
      */
     if(legitKeys.includes(e.key, 0)) {
-        wordTyped = wordTyped + e.key;
+        wordTyped = wordTyped + e.key;    
+        firstKeyDown--;
     }
 
     // Aggiorna a ogni tasto premuto la parola visionata
@@ -46,6 +52,11 @@ document.addEventListener("keydown", (e) => {
     }
     
     showStats();
+});
+
+resetButton.addEventListener('click', () => {
+    scoreBox.classList.add('hidden');
+    overlay.classList.add('hidden');
 });
 
 // Imposta una nuova parola quando la precedente è stata terminata
@@ -61,7 +72,7 @@ function setNewWord() {
 function checkWordPercentage() {
     let tmpWordToType = wordToTypeDom.textContent.toLowerCase();
     let tmpWordTyped = wordTypedDom.textContent.toLowerCase();
-    let equalsLetterCount = 0;
+    let equalsLetterCount = 0, percentage = 0;
     let isEquals = false;
 
     if(tmpWordToType.length === tmpWordTyped.length) {
@@ -87,7 +98,38 @@ function checkWordPercentage() {
 }
 
 function showStats() {
-    document.getElementById("last-percentage").textContent = "LWP: " +  percentage + "%";
     document.getElementById("best-score-word").textContent = "BSW: " +  bestScore;
     document.getElementById("active-score-word").textContent = "ASW: " +  activeScore;
+}
+
+function startTimer(seconds) {
+    let remainingSeconds = seconds;
+  
+    function updateTimer() {
+      if (remainingSeconds >= 0) {
+        const displayMinutes = Math.floor(remainingSeconds / 60).toString().padStart(2, '0');
+        const displaySeconds = (remainingSeconds % 60).toString().padStart(2, '0');
+        const timerDisplay = `${displayMinutes}:${displaySeconds}`;
+        document.getElementById("timer").textContent = timerDisplay + "s";
+        remainingSeconds--;
+      } else {
+        endGame();
+        clearInterval(intervalID);
+      }
+    }
+  
+    const intervalID = setInterval(updateTimer, 1000);
+}
+
+// Funzione per registrare il primo keydown per iniziare il gioco
+function handleFirstKeyDown(event) {
+    startTimer(10);
+    document.removeEventListener("keydown", handleFirstKeyDown);
+}
+
+function endGame() {
+    scoreBox.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+
+    wordTypedDom.textContent = "GAME FINISHED!";
 }

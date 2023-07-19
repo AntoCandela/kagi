@@ -16,18 +16,38 @@
         <h1 id="wordTyped"></h1>
     </div>
     <div class="box-w100-h15 fl-row bg-light-green gap-40">
-        <div class="bg-black padded txt-white rounded shadow-md">
+        <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
+            <span class="material-symbols-outlined">
+                timer
+            </span>
+            <h3 id="timer">00:10s</h3>
+        </div>
+        <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
+            <span class="material-symbols-outlined">
+                edit
+            </span>
             <h3 id="word-per-minute">WPM: 0</h3>
         </div>
-        <div class="bg-black padded txt-white rounded shadow-md">
-            <h3 id="last-percentage">LWP: 0%</h3>
-        </div>
-        <div class="bg-black padded txt-white rounded shadow-md">
+        <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
+            <span class="material-symbols-outlined">
+                verified
+            </span>
             <h3 id="best-score-word">BSW: 0</h3>
         </div>
-        <div class="bg-black padded txt-white rounded shadow-md">
+        <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
+            <span class="material-symbols-outlined">
+                flag
+            </span>
             <h3 id="active-score-word">ASW: 0</h3>
         </div>
+    </div>
+    <!-- Overlay di fine gioco -->
+    <div class="box-w100-h100 overlay hidden" id="overlay">
+
+    </div>
+    <div class="box-w50-h80 fl-column bg-white score-box rounded shadow-md gap-40 hidden" id="score-box">
+        <h1>Game completed!</h1>
+        <a href="#" id="btn-reset" class="bg-black padded txt-white rounded shadow-md">Reset</a>
     </div>
     <script src="main.js"></script>
 </body>
