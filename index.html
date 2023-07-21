@@ -20,7 +20,7 @@
             <span class="material-symbols-outlined">
                 timer
             </span>
-            <h3 id="timer">00:10s</h3>
+            <h3 id="timer">01:00s</h3>
         </div>
         <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
             <span class="material-symbols-outlined">
@@ -42,12 +42,21 @@
         </div>
     </div>
     <!-- Overlay di fine gioco -->
-    <div class="box-w100-h100 overlay hidden" id="overlay">
-
-    </div>
-    <div class="box-w50-h80 fl-column bg-white score-box rounded shadow-md gap-40 hidden" id="score-box">
-        <h1>Game completed!</h1>
-        <a href="#" id="btn-reset" class="bg-black padded txt-white rounded shadow-md">Reset</a>
+    <div class="box-w100-h100 overlay" id="overlay"></div>
+    <div class="box-w50-h80 fl-column bg-white score-box rounded shadow-md" id="score-box">
+        <div class="box-w100-h25 fl-row bg-black box-rounded-top">
+            <h1 class="main-title txt-white">Game Done!</h1>
+        </div>
+        <div class="box-w100-h50 fl-row">
+        </div>
+        <div class="box-w100-h25 fl-row">
+            <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5 btn btn-reset" id="btn-reset">
+                <span class="material-symbols-outlined">
+                    refresh
+                </span>
+                <h3>Reset</h3>
+            </div>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

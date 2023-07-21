@@ -13,7 +13,7 @@ let resetButton = document.getElementById('btn-reset');
 let legitKeys = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
 let legitWords = [];
 
-let bestScore = 0, activeScore = 0, firstKeyDown = 1;
+let bestScore = 0, activeScore = 0, firstKeyDown = 1, typedEntries = 0;
   
 window.addEventListener("load", (e) => {
     // Recuperiamo i dati 
@@ -38,7 +38,8 @@ document.addEventListener("keydown", (e) => {
      * quindi previene tasti come numeri, shift, tab ecc...
      */
     if(legitKeys.includes(e.key, 0)) {
-        wordTyped = wordTyped + e.key;    
+        wordTyped = wordTyped + e.key;
+        typedEntries++;
         firstKeyDown--;
     }
 
@@ -61,11 +62,10 @@ resetButton.addEventListener('click', () => {
 
 // Imposta una nuova parola quando la precedente è stata terminata
 function setNewWord() {
-    let newWord = "", randomIndex = 0;
+    let randomIndex = 0;
     randomIndex = Math.floor(Math.random() * (legitWords.length - 0) + 0);
-    newWord = legitWords[randomIndex];
+    wordToTypeDom.textContent = legitWords[randomIndex].toLowerCase();
     wordTyped = "";
-    wordToTypeDom.textContent = newWord.toLowerCase();
 }
 
 // Controlla lo stato della parola attuale calcolando la percentuale
@@ -98,6 +98,7 @@ function checkWordPercentage() {
 }
 
 function showStats() {
+    document.getElementById("word-per-minute").textContent = "WPM: 0";
     document.getElementById("best-score-word").textContent = "BSW: " +  bestScore;
     document.getElementById("active-score-word").textContent = "ASW: " +  activeScore;
 }
@@ -122,9 +123,9 @@ function startTimer(seconds) {
 }
 
 // Funzione per registrare il primo keydown per iniziare il gioco
-function handleFirstKeyDown(event) {
-    startTimer(10);
+function handleFirstKeyDown() {
     document.removeEventListener("keydown", handleFirstKeyDown);
+    startTimer(60);
 }
 
 function endGame() {
