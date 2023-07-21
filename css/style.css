@@ -59,7 +59,7 @@ h3 { letter-spacing: 1px; }
 }
 
 #wordToType {
-    font-size: 80px;
+    font-size: 90px;
     letter-spacing: 2px;
     color: var(--black);
     border-bottom: 10px dotted var(--black);
@@ -68,18 +68,20 @@ h3 { letter-spacing: 1px; }
 }
 
 #wordTyped {
-    font-size: 80px;
+    font-size: 90px;
     letter-spacing: 2px;
     color: var(--black);
     font-weight: 900;
 }
 
-
 .padded { padding: 15px 30px; }
+
 .rounded { border-radius: 25px; }
 .box-rounded-top { border-top-left-radius: 25px; border-top-right-radius: 25px; }
+
 .gap-5 { gap: 8px; }
 .gap-40 { gap: 40px; }
+
 .shadow-md { box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; }
 .absolute { position: absolute; }
 
@@ -100,6 +102,10 @@ h3 { letter-spacing: 1px; }
     z-index: 10;
 }
 
+.score-box-list {
+    list-style: none;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -109,6 +115,21 @@ h3 { letter-spacing: 1px; }
 }
 
 .hidden { display: none; }
-.main-title { font-size: 50px; }
+
+.main-title { font-size: 60px; }
+
 .btn { cursor: pointer; }
 .btn-reset { font-size: 16px; }
+
+.score-box-list {
+    align-items: flex-start !important;
+}
+
+.score-box-item {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 40px;
+    border-bottom: 5px dotted var(--black);
+    cursor: pointer;
+}

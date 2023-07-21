@@ -17,7 +17,7 @@ let bestScore = 0, activeScore = 0, firstKeyDown = 1, typedEntries = 0;
   
 window.addEventListener("load", (e) => {
     // Recuperiamo i dati 
-    fetch("words.txt")
+    fetch("../docs/words.txt")
         .then((res) => res.text())
         .then((text) => { 
             legitWords = text.replace(/(\r\n|\n|\r)/gm, "").split(',');
@@ -107,16 +107,16 @@ function startTimer(seconds) {
     let remainingSeconds = seconds;
   
     function updateTimer() {
-      if (remainingSeconds >= 0) {
-        const displayMinutes = Math.floor(remainingSeconds / 60).toString().padStart(2, '0');
-        const displaySeconds = (remainingSeconds % 60).toString().padStart(2, '0');
-        const timerDisplay = `${displayMinutes}:${displaySeconds}`;
-        document.getElementById("timer").textContent = timerDisplay + "s";
-        remainingSeconds--;
-      } else {
-        endGame();
-        clearInterval(intervalID);
-      }
+        if(remainingSeconds >= 0) {
+            const displayMinutes = Math.floor(remainingSeconds / 60).toString().padStart(2, '0');
+            const displaySeconds = (remainingSeconds % 60).toString().padStart(2, '0');
+            const timerDisplay = `${displayMinutes}:${displaySeconds}`;
+            document.getElementById("timer").textContent = timerDisplay + "s";
+            remainingSeconds--;
+        } else {
+            clearInterval(intervalID);
+            endGame();  
+        }
     }
   
     const intervalID = setInterval(updateTimer, 1000);
@@ -131,6 +131,7 @@ function handleFirstKeyDown() {
 function endGame() {
     scoreBox.classList.remove('hidden');
     overlay.classList.remove('hidden');
-
-    wordTypedDom.textContent = "GAME FINISHED!";
+    wordTypedDom.textContent = "";
+    wordTyped = "";
+    activeScore = 0;
 }

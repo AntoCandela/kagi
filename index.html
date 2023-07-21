@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Home</title>
 </head>
@@ -45,9 +45,16 @@
     <div class="box-w100-h100 overlay" id="overlay"></div>
     <div class="box-w50-h80 fl-column bg-white score-box rounded shadow-md" id="score-box">
         <div class="box-w100-h25 fl-row bg-black box-rounded-top">
-            <h1 class="main-title txt-white">Game Done!</h1>
+            <h1 class="main-title txt-white">
+                Game Done!
+            </h1>
         </div>
         <div class="box-w100-h50 fl-row">
+            <ul class="score-box-list fl-column gap-40">
+                <li class="score-box-item" id="score-box-wpm">Word per minute</li>
+                <li class="score-box-item" id="score-box-bsw">Best score word</li>
+                <li class="score-box-item" id="score-box-asw">Active score word</li>
+            </ul>
         </div>
         <div class="box-w100-h25 fl-row">
             <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5 btn btn-reset" id="btn-reset">
@@ -58,6 +65,6 @@
             </div>
         </div>
     </div>
-    <script src="main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
