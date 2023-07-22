@@ -8,6 +8,8 @@ let wordTyped = "";
 let wordToTypeDom = document.getElementById("wordToType");
 let wordTypedDom = document.getElementById("wordTyped");
 let buttonStart = document.getElementById("btn-start");
+let buttonIconStart = document.getElementById("btn-start-icon");
+let buttonTextStart = document.getElementById("btn-start-text");
 
 // Array che identificano quali lettere sono valide e la lista di parole
 let legitKeys = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
@@ -32,6 +34,8 @@ window.addEventListener("load", (e) => {
 buttonStart.addEventListener("click", () => {
     canType = true;
     buttonStart.classList.add("hidden");
+    buttonTextStart.textContent = "Restart";
+    buttonIconStart.textContent = "replay";
     startTimer(gameTimer);
     setNewWord();
 });
