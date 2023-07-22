@@ -10,17 +10,24 @@
 <body>
     <div class="box-w100-h40 fl-column bg-secondary">    
         <p>Type this word:</p>
-        <h1 id="wordToType"></h1>
+        <h1 id="wordToType">Click the button!</h1>
     </div>
-    <div class="box-w100-h45 fl-column bg-primary">
+    <div class="box-w100-h45 fl-column bg-primary gap-5">
         <h1 id="wordTyped"></h1>
+        <!-- Appena inizia il gioco -->
+        <div class="btn bg-black padded txt-white rounded shadow-md fl-row gap-5" id="btn-start">
+            <span class="material-symbols-outlined">
+                play_arrow
+            </span>
+            <h2>Inizia</h2>
+        </div>
     </div>
     <div class="box-w100-h15 fl-row bg-primary gap-40">
         <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
             <span class="material-symbols-outlined">
                 timer
             </span>
-            <h2 id="timer">01:00s</h2>
+            <h2 id="timer">60s</h2>
         </div>
         <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
             <span class="material-symbols-outlined">

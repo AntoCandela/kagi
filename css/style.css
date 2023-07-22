@@ -91,3 +91,6 @@ h2 { font-weight: 700; font-size: 20px; letter-spacing: 0.5px; }
 
 .txt-white { color: var(--white); }
 .txt-red { color: var(--red); }
+
+.hidden { display: none; }
+.btn { cursor: pointer; }
