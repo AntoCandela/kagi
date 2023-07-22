@@ -19,13 +19,18 @@ let bestScore = 0, activeScore = 0, firstKeyDown = 1, typedEntries = 0;
 let canType = false;
 
 let gameTimer = 59;
+
+let apiUrl = 'https://random-word-api.herokuapp.com/word?number=300&length=7';
+
+
   
 window.addEventListener("load", (e) => {
     // Recuperiamo i dati 
-    fetch("../docs/words.txt")
-        .then((res) => res.text())
-        .then((text) => { 
-            legitWords = text.replace(/(\r\n|\n|\r)/gm, "").split(',');
+    fetch(apiUrl)
+        .then((res) => res.json())
+        .then((res) => { 
+            legitWords = res;
+            //console.log(legitWords);
         })
     .catch((e) => console.error(e));
 });
