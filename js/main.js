@@ -5,9 +5,6 @@ let wordTyped = "";
 // Vengono impostate le due variabili DOM
 let wordToTypeDom = document.getElementById("wordToType");
 let wordTypedDom = document.getElementById("wordTyped");
-let scoreBox = document.getElementById("score-box");
-let overlay = document.getElementById("overlay");
-let resetButton = document.getElementById('btn-reset');
 
 // Array che identificano quali lettere sono valide e la lista di parole
 let legitKeys = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
@@ -26,15 +23,15 @@ window.addEventListener("load", (e) => {
     .catch((e) => console.error(e));
 });
 
-document.addEventListener("keydown", handleFirstKeyDown);
+window.addEventListener("keydown", handleFirstKeyDown);
 
-document.addEventListener("keydown", (e) => {
+window.addEventListener("keydown", (e) => {
     // Se viene premuto il backspace l'ultima lettere sarà cancellata
     if(e.key == "Backspace") {
         wordTyped = wordTyped.substring(0, wordTyped.length - 1);
     }
     /**
-     * Se il tasto appena premuto è dentro l'arraw di lettere valide viene aggiunto
+     * Se il tasto appena premuto è dentro l'array di lettere valide viene aggiunto
      * quindi previene tasti come numeri, shift, tab ecc...
      */
     if(legitKeys.includes(e.key, 0)) {
@@ -48,16 +45,10 @@ document.addEventListener("keydown", (e) => {
 
     // Si controlla se la parola è stata terminata e si procede al calcolo
     if(checkWordPercentage()) {
-        wordTypedDom.textContent = "";
         setNewWord();
     }
-    
+    // Mostra le statistiche a ogni tasto premuto utile per il WPM
     showStats();
-});
-
-resetButton.addEventListener('click', () => {
-    scoreBox.classList.add('hidden');
-    overlay.classList.add('hidden');
 });
 
 // Imposta una nuova parola quando la precedente è stata terminata
@@ -65,6 +56,8 @@ function setNewWord() {
     let randomIndex = 0;
     randomIndex = Math.floor(Math.random() * (legitWords.length - 0) + 0);
     wordToTypeDom.textContent = legitWords[randomIndex].toLowerCase();
+    // Reset della parola scritta
+    wordTypedDom.textContent = "";
     wordTyped = "";
 }
 
@@ -115,7 +108,7 @@ function startTimer(seconds) {
             remainingSeconds--;
         } else {
             clearInterval(intervalID);
-            endGame();  
+            endGame();
         }
     }
   
@@ -124,13 +117,11 @@ function startTimer(seconds) {
 
 // Funzione per registrare il primo keydown per iniziare il gioco
 function handleFirstKeyDown() {
-    document.removeEventListener("keydown", handleFirstKeyDown);
+    window.removeEventListener("keydown", handleFirstKeyDown);
     startTimer(60);
 }
 
 function endGame() {
-    scoreBox.classList.remove('hidden');
-    overlay.classList.remove('hidden');
     wordTypedDom.textContent = "";
     wordTyped = "";
     activeScore = 0;

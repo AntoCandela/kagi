@@ -8,61 +8,37 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="box-w100-h40 fl-column bg-green">    
+    <div class="box-w100-h40 fl-column bg-secondary">    
         <p>Type this word:</p>
         <h1 id="wordToType"></h1>
     </div>
-    <div class="box-w100-h45 fl-column bg-light-green">
+    <div class="box-w100-h45 fl-column bg-primary">
         <h1 id="wordTyped"></h1>
     </div>
-    <div class="box-w100-h15 fl-row bg-light-green gap-40">
+    <div class="box-w100-h15 fl-row bg-primary gap-40">
         <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
             <span class="material-symbols-outlined">
                 timer
             </span>
-            <h3 id="timer">01:00s</h3>
+            <h2 id="timer">01:00s</h2>
         </div>
         <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
             <span class="material-symbols-outlined">
                 edit
             </span>
-            <h3 id="word-per-minute">WPM: 0</h3>
+            <h2 id="word-per-minute">WPM: 0</h2>
         </div>
         <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
             <span class="material-symbols-outlined">
                 verified
             </span>
-            <h3 id="best-score-word">BSW: 0</h3>
+            <h2 id="best-score-word">BSW: 0</h2>
         </div>
         <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5">
             <span class="material-symbols-outlined">
                 flag
             </span>
-            <h3 id="active-score-word">ASW: 0</h3>
-        </div>
-    </div>
-    <!-- Overlay di fine gioco -->
-    <div class="box-w100-h100 overlay" id="overlay"></div>
-    <div class="box-w50-h80 fl-column bg-white score-box rounded shadow-md" id="score-box">
-        <div class="box-w100-h25 fl-row bg-black box-rounded-top">
-            <h1 class="main-title txt-white">
-                Game Done!
-            </h1>
-        </div>
-        <div class="box-w100-h50 fl-row">
-            <ul class="score-box-list fl-column gap-40">
-                <li class="score-box-item" id="score-box-wpm">Word per minute</li>
-                <li class="score-box-item" id="score-box-bsw">Best score word</li>
-                <li class="score-box-item" id="score-box-asw">Active score word</li>
-            </ul>
-        </div>
-        <div class="box-w100-h25 fl-row">
-            <div class="bg-black padded txt-white rounded shadow-md fl-row gap-5 btn btn-reset" id="btn-reset">
-                <span class="material-symbols-outlined">
-                    refresh
-                </span>
-                <h3>Reset</h3>
-            </div>
+            <h2 id="active-score-word">ASW: 0</h2>
         </div>
     </div>
     <script src="./js/main.js"></script>
