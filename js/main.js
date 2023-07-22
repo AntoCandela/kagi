@@ -18,7 +18,7 @@ let legitWords = [];
 let bestScore = 0, activeScore = 0, firstKeyDown = 1, typedEntries = 0;
 let canType = false;
 
-let gameTimer = 2;
+let gameTimer = 59;
 
 let apiUrl = 'https://random-word-api.herokuapp.com/word?number=300&length=7';
 
