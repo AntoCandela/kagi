@@ -18,7 +18,7 @@ let legitWords = [];
 let bestScore = 0, activeScore = 0, firstKeyDown = 1, typedEntries = 0;
 let canType = false;
 
-let gameTimer = 59;
+let gameTimer = 2;
 
 let apiUrl = 'https://random-word-api.herokuapp.com/word?number=300&length=7';
 
@@ -95,9 +95,11 @@ function checkWords() {
             if(activeScore > bestScore) {
                 bestScore = activeScore;
             }
+            playAudio('audioSrc/correct-choice.mp3')
         }
         else {
             activeScore = 0;
+            playAudio('audioSrc/wrong-choice.mp3')
         }
         // Si ritorna true quando le due parole sono lunghe uguali
         isEquals = true;
@@ -124,6 +126,7 @@ function startTimer(seconds) {
             remainingSeconds--;
         } else {
             clearInterval(intervalID);
+            playAudio('audioSrc/win.mp3')
             gameReset();
         }
     }
@@ -133,8 +136,13 @@ function startTimer(seconds) {
 
 function gameReset() {
     buttonStart.classList.remove("hidden");
-    wordTypedDom.textContent = "";
+    wordTypedDom.textContent = "SCORE: " + bestScore;
     wordTyped = "";
     activeScore = 0;
     canType = false;
+}
+
+// play an audio from a url given
+function playAudio(url) {
+    new Audio(url).play();
 }
